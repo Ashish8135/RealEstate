@@ -1,0 +1,142 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate  | {% block title %}{% endblock %}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href='{% static "css/all.css" %}' alt="">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}" alt="">
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" alt="">
+    <!--Lightbox-->
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}" alt="">
+
+
+</head>
+<body>
+<!-- Top Bar -->
+<section id="top-bar" class="p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-phone"></i> 1800-201-202
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-envelope-open"></i> contact@btrealestate.co
+            </div>
+            <div class="col-md-4">
+                <div class="social text-right">
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.facebook.com/ashish.anand45" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ashish-anand-737b78105/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ashish_anand_shanu/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index'%}">
+            <img src="static/img/logo.png" class="logo" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item active mr-3">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li {% if 'about' in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+
+                <li {% if "listings" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
+                <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                 <li {% if 'dashboard' in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
+                <a class="nav-link" href="{% url 'dashboard' %}">
+                    Welcome {{user.username }}(Dashboard)</a>
+                </li>
+                <li class="nav-item mr-3">
+                  <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>Logout</a>
+                    <form action="{% url 'logout'%}" method="post" id="logout">
+                        {% csrf_token %}
+                        <input type="hidden">
+                    </form>
+                </li>
+                {% else %}
+                <li {% if 'register' in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
+                <a class="nav-link" href="{% url 'register' %}">
+                    <i class="fas fa-user-plus"></i> Register</a>
+                </li>
+                <li {% if 'login' in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
+                <a class="nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt"></i>Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content %} {% endblock %}
+
+<!-- Footer -->
+<footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    Copyright &copy;
+    <span class="year"></span>Real Estate
+</footer>
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" alt="">
+</script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" alt="">
+</script>
+<script src="{% static 'js/main.js' %}" alt="">
+</script>
+<script src="{% static 'js/lightbox.min.js' %}" alt="">
+</script>
+</body>
+</html>
