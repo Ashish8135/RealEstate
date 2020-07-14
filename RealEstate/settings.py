@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# from django.conf.urls.static import static
+from django.conf.urls.static import static
 
 # import psycopg2
 
@@ -30,7 +30,7 @@ SECRET_KEY = '-#lkib#555^0hekk5z+2p!bpc_r6^fr+e%^bkc**n1%xww3t06'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -97,7 +97,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'ashish',
         'HOST': 'localhost',
-        'PORT': '1234',
+        'PORT': '5432',
     }
 }
 
@@ -145,10 +145,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_DIRS = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+# ADMIN_MEDIA_PREFIX = '/static/admin/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'RealEstate/static/')
+# ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'RealEstate/static')
+    STATIC_DIRS
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

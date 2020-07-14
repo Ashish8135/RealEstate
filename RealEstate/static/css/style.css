@@ -17,7 +17,7 @@ img {
 #showcase {
   background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
   position: relative;
-  min-height: 650px;
+  min-height: 600px;
   color: #fff;
   padding-top: 6rem; }
   #showcase .home-search {
