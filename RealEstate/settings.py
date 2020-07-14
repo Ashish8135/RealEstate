@@ -30,7 +30,7 @@ SECRET_KEY = '-#lkib#555^0hekk5z+2p!bpc_r6^fr+e%^bkc**n1%xww3t06'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['realhouse.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['realhouse.herokuapp.com', '127.0.0.1']
 # ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
@@ -92,15 +92,19 @@ WSGI_APPLICATION = 'RealEstate.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'realestate',
+#         'USER': 'postgres',
+#         'PASSWORD': 'ashish',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'realestate',
-        'USER': 'postgres',
-        'PASSWORD': 'ashish',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config()
 }
 
 # DATABASES = {
