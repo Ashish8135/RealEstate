@@ -33,8 +33,8 @@ def contact(request):
         send_mail(
             'Property listing inquiry',
             'There has been inquiry for ' + listing + '.please sign to this link for complete your profile',
-            'ashish.shaivya10@gmail.com',
-            [realtor_email,'amitsin403@gmail.com','vishalsah09@gmail.com','anitajoshi4846@gmail.com'],
+            'anitajoshi4846@gmail.com',
+            [realtor_email,'amitsin403@gmail.com','vishalsah09@gmail.com','ashish.anand10191@gmail.com'],
             fail_silently=False
         )
 
