@@ -93,20 +93,21 @@ WSGI_APPLICATION = 'RealEstate.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'realestate',
-#         'USER': 'postgres',
-#         'PASSWORD': 'ashish',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'realestate',
+        'USER': 'postgres',
+        'PASSWORD': 'ashish',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
+# import dj_database_url
+#
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 # DATABASES = {
 #     'default': {
@@ -159,7 +160,7 @@ STATIC_URL = '/static/'
 
 # ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'RealEstate/static/')
+    os.path.join(BASE_DIR, 'RealEstate/static/')
 ]
 # STATICFILES_DIRS = [
 #     STATIC_DIRS
@@ -177,7 +178,7 @@ MESSAGE_TAGS = {
 }
 
 # Email configuration
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT=587
 # EMAIL_HOST_USER='anitajoshi4846@gmail.com'
@@ -187,9 +188,8 @@ MESSAGE_TAGS = {
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'anitajoshi4846@gmail.com'
+EMAIL_HOST_USER = 'Anitajoshi4846@gmail.com'
 EMAIL_HOST_PASSWORD = 'Anitajoshi@12345'
 EMAIL_PORT = 587
-
 
 django_heroku.settings(locals())
