@@ -74,9 +74,9 @@ def dashboard(request):
     #     return redirect('login')
     # else:
     # from RealEstate.contacts.models import Contact
-    user_contact = Contact.objects.order_by('contact_date').filter(user_id=request.user.id)
+    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
     context = {
-        'contact': user_contact
+        'contact': user_contacts
     }
     return render(request, 'accounts/dashboard.html', context)
 
