@@ -1,3 +1,4 @@
+from django.conf.global_settings import EMAIL_HOST_USER
 from django.contrib import messages
 # from django.http import HttpResponse
 from django.core.mail import send_mail
@@ -5,6 +6,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import Contact
+# from ..RealEstate.settings import EMAIL_HOST_USER
 
 
 def contact(request):
@@ -33,9 +35,9 @@ def contact(request):
         send_mail(
             'Property listing inquiry',
             'There has been inquiry for ' + listing + '.please sign to this link for complete your profile',
-            'anitajoshi4846@gmail.com',
+            EMAIL_HOST_USER,
             [realtor_email,'amitsin403@gmail.com','vishalsah09@gmail.com','ashish.anand10191@gmail.com'],
-            fail_silently=False
+            fail_silently=True
         )
 
         messages.success(request, "Thank You ! Your request has been submitted ,a realtor will get back to you soon")
