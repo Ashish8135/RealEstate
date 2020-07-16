@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 from django.conf.urls.static import static
 
@@ -189,3 +190,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ashish.shaivya10@gmail.com'
 EMAIL_HOST_PASSWORD = 'sankalp@10'
 EMAIL_PORT = 587
+
+
+django_heroku.settings(locals())
